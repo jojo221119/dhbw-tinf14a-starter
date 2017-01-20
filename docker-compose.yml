@@ -1,0 +1,51 @@
+version: "2"
+services: 
+ nginx-proxy:
+  image: jwilder/nginx-proxy
+  container_name: nginx-proxy
+  ports:
+   - "80:80"
+  volumes:
+   - /var/run/docker.sock:/tmp/docker.sock:ro
+  environment:
+   - DEFAULT_HOST=www.*
+
+ database:
+  image: mysql:5.7.17
+  container_name: database
+  volumes:
+   - /database/initdb.d:/docker-entrypoint-initdb.d:rw
+   - /database/data.d:/var/lib/mysql:rw
+  ports:
+   - "3306:3306"
+  environment:
+   - MYSQL_ROOT_PASSWORD=EoRBeOvnOt
+   - MYSQL_DATABASE=data
+
+ api:
+  image: tomcat:9.0.0.M15-jre8-alpine
+  container_name: api
+  depends_on:
+   - database
+  volumes:
+   - ./api/deploy:/usr/local/tomcat/webapps:rw
+  expose:
+   - "8080"
+  environment:
+   - SPRING_PROFILES_ACTIVE=integration
+   - VIRTUAL_HOST=api.*
+  links:
+   - database
+
+ www:
+  image: node:7.3.0-alpine
+  working_dir: /www
+  command: /bin/sh -c "node -v && npm -v && npm run server:prod:ci"
+  container_name: www
+  expose:
+   - "3000"
+  volumes:
+   - ./www:/www
+  environment:
+   - HOST=0.0.0.0
+   - VIRTUAL_HOST=www.*

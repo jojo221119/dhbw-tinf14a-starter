@@ -1,0 +1,26 @@
+<div class="card-container">
+
+  <h1>MySQL Health</h1>
+
+  <p *ngIf="healthStatusValues.length == 0">
+    API server not available...
+  </p>
+
+  <table *ngIf="healthStatusValues.length > 0">
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let variable of healthStatusValues">
+        <td>{{variable.Variable_name}}</td>
+        <td>{{variable.Value}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+</div>
