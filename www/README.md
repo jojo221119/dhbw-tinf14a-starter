@@ -29,3 +29,7 @@ It is a slightly customized starter project for Angular2 and Webpack.
 # Further reading & watching
 ## Angular 2 webpack starter
 * https://github.com/AngularClass/angular2-webpack-starter
+
+## Webpack
+* https://www.youtube.com/watch?v=WQue1AN93YU
+* https://www.infoq.com/presentations/4-concepts-webpack
