@@ -17,7 +17,7 @@ export class HealthService {
   public getHealthStatus() {
 
     // Use angular http client to retrieve
-    this.http.get("//api.local/health")
+    this.http.get("//api.starter/health")
              .map(res => res.json())
              .subscribe((res) => {
 
