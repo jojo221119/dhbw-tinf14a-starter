@@ -6,6 +6,9 @@ It is a slightly customized Spring Boot application.
 `application.properties` contains default application configuration.
 Use `application-integration.properties` to configure local docker integration and `application-production.properties` for production configuration in combination with `SPRING_PROFILES_ACTIVE=production` environment variable.
 
+# Requirements
+
+
 # Building
 Build this API application
     gradle build

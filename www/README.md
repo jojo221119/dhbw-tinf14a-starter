@@ -4,6 +4,10 @@ Based on <a href="https://github.com/AngularClass/angular2-webpack-starter">Angu
 This is the WWW component of the starter project. 
 It is a slightly customized starter project for Angular2 and Webpack.
 
+# Requirements
+- NodeJS >= 4.2.1
+- npm >= 3
+
 # Installation
 	npm install
 
