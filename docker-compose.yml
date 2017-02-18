@@ -38,9 +38,9 @@ services:
    - database
 
  www:
-  image: node:7.3.0-alpine
+  image: node:7.5.0-alpine
   working_dir: /www
-  command: /bin/sh -c "node -v && npm -v && npm run server:prod:ci"
+  command: /bin/sh -c "node -v && npm -v && npm run server:dev"
   container_name: www
   expose:
    - "3000"
