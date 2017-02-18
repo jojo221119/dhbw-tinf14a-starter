@@ -5,7 +5,7 @@ This project shares a common boilerplate for applications developed in the conte
 This project folder contains code for an API- and WWW-server. Both run in a virtualized docker environment for which `docker-compose.yml` exists.
 
 # Requirements 
-Install docker environment, e.g. with __docker toolbox__ software package.
+Install docker environment, e.g. with __docker toolbox__ software package or corresponding suites for linux or MacOS.
 
 # Infrastructure
 ## Docker
@@ -17,25 +17,34 @@ It is best to use a separate docker machine with this infrastructure requirement
 Create one machine with `docker-machine create` command and spend this machine at least 2 cores and 2GB memory for good performance.
 
 ### Docker compose
-NOTICE: Don't forget to previously configure a __docker-machine__ and connect your CLI with it!
+NOTICE: Don't forget to previously configure a __docker-machine__ and connect your CLI with it using `eval $(docker-machine env ...)` command!
 
-The docker configuration file is `docker-compose.yml`.
+The docker configuration file is `docker-compose.yml` and defines 
 
 For the first docker infrastructure creation:
 
     docker-compose up
     
-After this you can start the infrastructure later on with:
+After this you can start the infrastructure later on with (no provisioning):
 	
 	docker-compose start
     
-...and stop it with:
+...and stop it with (no deletion):
 
     docker-compose stop 
 	
-# Local integration environment
-Add IP of your local docker machine to your `hosts` file with the names `starter` and `api.starter`.
+If you want to bury your docker containers use:
+
+	docker-compose down
 	
+# Local integration environment
+Add the IP of this corresponding docker machine to your `hosts` file with the names `www.starter` and `api.starter`.
+You can use `docker-machine ip ...` to retrieve the machine's current IP address. 
+
+# For setup instructions for development environment read further READMEs of subfolders!
+[www](/www/README.md)
+[api](/api/README.md)
+
 # License
  [MIT](/LICENSE)
 

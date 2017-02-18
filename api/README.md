@@ -12,12 +12,15 @@ Use `application-integration.properties` to configure local docker integration a
 
 # Building
 Build this API application
-    gradle build
+
+	gradle build -x test
 
 Deploying built package to tomcat running on docker infrastructure 
+
     gradle deployIntegration
     
 Undeploy running webapp from docker infrastructure
+
     gradle undeployIntegration
     
 # Runing dev
