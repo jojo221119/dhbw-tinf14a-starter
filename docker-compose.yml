@@ -12,7 +12,6 @@ services:
 
  database:
   image: mysql:5.7.17
-  container_name: database
   volumes:
    - /database/initdb.d:/docker-entrypoint-initdb.d:rw
    - /database/data.d:/var/lib/mysql:rw
@@ -24,7 +23,6 @@ services:
 
  api:
   image: tomcat:9.0.0.M15-jre8-alpine
-  container_name: api
   depends_on:
    - database
   volumes:
@@ -40,8 +38,7 @@ services:
  www:
   image: node:7.5.0-alpine
   working_dir: /www
-  command: /bin/sh -c "node -v && npm -v && npm run server:dev"
-  container_name: www
+  command: /bin/sh -c "node -v && npm -v && npm run server:prod:ci"
   expose:
    - "3000"
   volumes:
@@ -49,3 +46,4 @@ services:
   environment:
    - HOST=0.0.0.0
    - VIRTUAL_HOST=www.*
+   - DEBUG=express:*
